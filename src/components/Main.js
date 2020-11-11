@@ -19,6 +19,19 @@ class Main extends Component {
     
     render() {
 
+        function UserGreeting(props) {
+            return <h1>Welcome back!</h1>;
+        }
+
+        function GuestGreeting(props) {
+            return <h1>Please sign up.</h1>
+        }
+
+        function Greeting(props) {
+            const isLoggedIn = props.isLoggedIn;
+            return isLoggedIn ? <UserGreeting /> : <GuestGreeting />;
+        }
+
         return (
             <div>
                 <h1>Hello, world!</h1>
@@ -26,6 +39,7 @@ class Main extends Component {
                 <button onClick={this.handleClick}>
                     {this.state.isToggleOn ? 'ON' : 'OFF'}
                 </button>
+                <Greeting isLoggedIn={true} />
             </div>
         );
     }
